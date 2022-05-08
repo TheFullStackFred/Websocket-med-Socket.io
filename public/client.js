@@ -44,7 +44,7 @@ let dice = {
 let numbers = []
 const printNumber = (number) => {
   numbers.push(number)
-  const sum = numbers.reduce((x, xx) => x + xx, 0)
+  const sum = numbers.reduce((x, xx) => x + xx)
   diceElement.innerHTML = sum
 }
 
