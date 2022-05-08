@@ -1,16 +1,30 @@
 const socket = io()
-
+const formUser = document.querySelector('#formUser')
+const inputUser = document.querySelector('#inputUser')
 const messages = document.querySelector('#messages')
-const form = document.querySelector('#form')
-const input = document.querySelector('#input')
+const formMessage = document.querySelector('#formMessage')
+const inputMessage = document.querySelector('#inputMessage')
 const clock = document.querySelector('#clock')
-// clock.className = 'clock'
+const userContianer = document.querySelector('#userContainer')
+userContianer.className = 'glow'
+const user = document.getElementById('user')
+const message = document.getElementById('message')
+const h2Messages = document.querySelector('#h2-messages')
+let myUser
 
-form.addEventListener('submit', function (e) {
+formUser.addEventListener('submit', function (e) {
   e.preventDefault()
-  if (input.value) {
-    socket.emit('chatMessage', input.value)
-    input.value = ''
+  myUser = inputUser.value
+  userContianer.innerHTML = '<h2>Welcome ' + myUser + '</h2>'
+  user.style.display = 'none'
+  message.style.display = 'block'
+  h2Messages.style.display = 'block'
+})
+
+formMessage.addEventListener('submit', function (e) {
+  e.preventDefault()
+  if (inputMessage.value) {
+    socket.emit('chatMessage', { user: myUser, message: inputMessage.value })
   }
 })
 

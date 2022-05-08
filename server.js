@@ -3,7 +3,7 @@ const app = express()
 const http = require('http')
 const server = http.createServer(app)
 const io = require('socket.io')(server)
-const port = 3333
+const port = 3000
 
 app.use(express.static('public'))
 
@@ -34,7 +34,7 @@ io.on('connection', (socket) => {
   console.log(`A client with id ${socket.id} connected to the chat!`)
 
   socket.on('chatMessage', (msg) => {
-    io.emit('newChatMessage', msg)
+    io.emit('newChatMessage', msg.user + ' : ' + msg.message)
     console.log(`Client: ${socket.id}, Sent: ${msg}, At: ${timeStamp} `)
   })
 

@@ -78,7 +78,7 @@ button {
 }
 
 ::placeholder {
-  color: #e5e5e5;
+  color: rgba(0, 0, 0, 0.943);
 }
 
 #messages {
@@ -97,6 +97,14 @@ hr {
   border-top: 2px solid white;
 }
 
+#message {
+  display: none;
+}
+
+#h2-messages {
+  display: none;
+}
+
 /* Glow */
 .glow {
   font-size: 32px;
@@ -105,7 +113,7 @@ hr {
   animation: glow 1s ease-in-out infinite alternate;
 }
 
-@-webkit-keyframes glow {
+@keyframes glow {
   from {
     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073,
       0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
