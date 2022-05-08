@@ -41,8 +41,11 @@ let dice = {
   }
 }
 
+let numbers = []
 const printNumber = (number) => {
-  diceElement.innerHTML = number
+  numbers.push(number)
+  const sum = numbers.reduce((x, xx) => x + xx, 0)
+  diceElement.innerHTML = sum
 }
 
 diceBtn.addEventListener('click', (e) => {
