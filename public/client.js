@@ -4,7 +4,7 @@ const messages = document.querySelector('#messages')
 const form = document.querySelector('#form')
 const input = document.querySelector('#input')
 const clock = document.querySelector('#clock')
-clock.className = 'clock'
+// clock.className = 'clock'
 
 form.addEventListener('submit', function (e) {
   e.preventDefault()

@@ -1,12 +1,12 @@
 {
-  "name": "socketio-ovn",
+  "name": "socket-chat-and-dice",
   "version": "1.0.0",
-  "description": "övning 1",
+  "description": "socket.io assignment",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Fred",
+  "author": "Fredrik Stromberg",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.1",
