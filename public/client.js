@@ -12,7 +12,7 @@ const message = document.getElementById('message')
 const h2Messages = document.querySelector('#h2-messages')
 let myUser
 
-formUser.addEventListener('submit', function (e) {
+formUser.addEventListener('submit', (e) => {
   e.preventDefault()
   myUser = inputUser.value
   userContianer.innerHTML = '<h2>Welcome ' + myUser + '</h2>'
@@ -22,7 +22,7 @@ formUser.addEventListener('submit', function (e) {
 })
 inputUser.value = ''
 
-formMessage.addEventListener('submit', function (e) {
+formMessage.addEventListener('submit', (e) => {
   e.preventDefault()
   if (inputMessage.value) {
     socket.emit('chatMessage', { user: myUser, message: inputMessage.value })
@@ -30,11 +30,11 @@ formMessage.addEventListener('submit', function (e) {
   }
 })
 
-socket.on('time', function (timeMsg) {
+socket.on('time', (timeMsg) => {
   clock.innerHTML = timeMsg
 })
 
-socket.on('newChatMessage', function (msg) {
+socket.on('newChatMessage', (msg) => {
   let hr = document.createElement('hr')
   let item = document.createElement('li')
   item.textContent = msg
