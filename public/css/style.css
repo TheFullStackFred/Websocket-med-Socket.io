@@ -60,7 +60,7 @@ input {
 }
 
 button {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.925);
   margin-top: 10px;
   width: 100%;
   color: #080710;
