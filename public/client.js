@@ -9,7 +9,9 @@ const userContianer = document.querySelector('#userContainer')
 userContianer.className = 'glow'
 const user = document.getElementById('user')
 const message = document.getElementById('message')
-const h2Messages = document.querySelector('#h2-messages')
+const h2Messages = document.querySelector('#h2Messages')
+const diceBtn = document.getElementById('diceBtn')
+const diceElement = document.getElementById('diceElement')
 let myUser
 
 formUser.addEventListener('submit', (e) => {
@@ -26,8 +28,28 @@ formMessage.addEventListener('submit', (e) => {
   e.preventDefault()
   if (inputMessage.value) {
     socket.emit('chatMessage', { user: myUser, message: inputMessage.value })
-    inputMessage.value = ''
   }
+})
+inputMessage.value = ''
+
+//DICE
+let dice = {
+  sides: 6,
+  roll: function () {
+    let randomNumber = Math.floor(Math.random() * this.sides) + 1
+    return randomNumber
+  }
+}
+
+const printNumber = (number) => {
+  diceElement.innerHTML = number
+}
+
+diceBtn.addEventListener('click', (e) => {
+  e.preventDefault()
+  diceElement.style.display = 'block'
+  let result = dice.roll()
+  printNumber(result)
 })
 
 socket.on('time', (timeMsg) => {
