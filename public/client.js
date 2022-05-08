@@ -20,11 +20,13 @@ formUser.addEventListener('submit', function (e) {
   message.style.display = 'block'
   h2Messages.style.display = 'block'
 })
+inputUser.value = ''
 
 formMessage.addEventListener('submit', function (e) {
   e.preventDefault()
   if (inputMessage.value) {
     socket.emit('chatMessage', { user: myUser, message: inputMessage.value })
+    inputMessage.value = ''
   }
 })
 

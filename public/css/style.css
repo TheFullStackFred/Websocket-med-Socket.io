@@ -10,9 +10,9 @@ body {
 }
 
 form {
+  background: rgba(255, 255, 255, 0.13);
   height: auto;
   width: 400px;
-  background-color: rgba(255, 255, 255, 0.13);
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
@@ -32,11 +32,12 @@ form * {
   border: none;
 }
 
-h1 {
-  font-size: 32px;
+h1,
+h2 {
   font-weight: 500;
   line-height: 42px;
   text-align: center;
+  margin-top: 10px;
 }
 
 .clock {
@@ -46,18 +47,11 @@ h1 {
   text-align: center;
 }
 
-h2 {
-  font-size: 32px;
-  font-weight: 500;
-  line-height: 42px;
-  text-align: center;
-}
-
 input {
+  background: rgba(255, 255, 255, 0.498);
   display: block;
   height: 50px;
   width: 95%;
-  background-color: rgba(255, 255, 255, 0.498);
   border-radius: 5px;
   padding: 0 10px;
   margin-top: 10px;
@@ -66,9 +60,9 @@ input {
 }
 
 button {
+  background: #ffffff;
   margin-top: 10px;
   width: 100%;
-  background-color: #ffffff;
   color: #080710;
   padding: 15px 0;
   font-size: 18px;
@@ -82,13 +76,13 @@ button {
 }
 
 #messages {
-  list-style-type: none;
+  list-style: none;
+  background: #dda4c070;
   font-size: 32px;
   font-weight: 500;
   line-height: 42px;
   text-align: center;
   color: white;
-  background-color: #dda4c070;
   border-radius: 5px;
   margin-top: 5px;
 }
@@ -97,15 +91,13 @@ hr {
   border-top: 2px solid white;
 }
 
-#message {
-  display: none;
-}
-
+#message,
 #h2-messages {
   display: none;
 }
 
 /* Glow */
+
 .glow {
   font-size: 32px;
   color: #fff;

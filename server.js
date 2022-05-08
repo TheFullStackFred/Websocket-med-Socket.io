@@ -5,8 +5,34 @@ const server = http.createServer(app)
 const io = require('socket.io')(server)
 const port = 3000
 
+const mongo = require('mongodb').MongoClient
+const url = 'mongodb://localhost:27017'
+let db
+
+mongo.connect(
+  url,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  },
+  (err, client) => {
+    if (err) {
+      console.error(err)
+      return
+    }
+    db = client.db('nodesocket')
+    messages = db.collection('messages')
+  }
+)
+
 app.use(express.static('public'))
 
+app.get('/messages', (req, res) => {
+  messages.find().toArray((err, items) => {
+    if (err) throw err
+    res.json({ messages: items })
+  })
+})
 // Time for frontend
 setInterval(() => {
   let today = new Date()
@@ -35,7 +61,18 @@ io.on('connection', (socket) => {
 
   socket.on('chatMessage', (msg) => {
     io.emit('newChatMessage', msg.user + ' : ' + msg.message)
-    console.log(`Client: ${socket.id}, Sent: ${msg}, At: ${timeStamp} `)
+    console.log(`Client: ${socket.id}, Sent: ${msg.message}, At: ${timeStamp} `)
+    messages.insertOne(
+      {
+        user: msg.user,
+        message: msg.message,
+        date: timeStamp
+      },
+      (err, result) => {
+        if (err) throw err
+        console.log(result)
+      }
+    )
   })
 
   socket.on('disconnect', () => {
