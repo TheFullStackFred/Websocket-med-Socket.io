@@ -44,8 +44,10 @@ let dice = {
 let numbers = []
 const printNumber = (number) => {
   numbers.push(number)
+  console.log('Singlevalue:', number)
   const sum = numbers.reduce((x, xx) => x + xx)
-  diceElement.innerHTML = sum
+  const singleValue = numbers.reduce((x, xx) => (x = xx))
+  diceElement.innerHTML = `${myUser} got ${singleValue} and the total value is ${sum}`
 }
 
 diceBtn.addEventListener('click', (e) => {
