@@ -17,7 +17,9 @@ const nameBtn = document.getElementById('nameBtn')
 let myUser
 
 const play = () => {
-  audio.play()
+  if (inputUser.value) {
+    audio.play()
+  }
 }
 nameBtn.addEventListener('click', play)
 
