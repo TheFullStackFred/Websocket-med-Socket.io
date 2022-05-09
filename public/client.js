@@ -12,7 +12,14 @@ const message = document.getElementById('message')
 const h2Messages = document.querySelector('#h2Messages')
 const diceBtn = document.getElementById('diceBtn')
 const diceElement = document.getElementById('diceElement')
+const audio = document.getElementById('audio')
+const nameBtn = document.getElementById('nameBtn')
 let myUser
+
+const play = () => {
+  audio.play()
+}
+nameBtn.addEventListener('click', play)
 
 formUser.addEventListener('submit', (e) => {
   e.preventDefault()

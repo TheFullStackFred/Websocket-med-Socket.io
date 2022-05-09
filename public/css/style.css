@@ -107,6 +107,10 @@ hr {
   margin: auto;
 }
 
+#audio {
+  display: none;
+}
+
 /* Glow */
 
 .glow {

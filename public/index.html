@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    </style>
-    <script src="/socket.io/socket.io.js" defer></script>
-    <script src="client.js" defer></script>
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Node.Js med Socket.Io</title>
-  </head>
-  <body>
-    <div id="userContainer"></div>
-    <div id="user">
-      <form id="formUser">
-        <input type="text" placeholder="Enter your name" id="inputUser" required />
-        <button>Add</button>
-      </form>
-    </div>
-    <div id="message">
-      <p id="clock" class="glow"></p>
-      <form id="formMessage">
+  </style>
+  <script src="/socket.io/socket.io.js" defer></script>
+  <script src="client.js" defer></script>
+  <link rel="stylesheet" href="css/style.css" />
+  <title>Node.Js med Socket.Io</title>
+</head>
+<body>
+  <div id="userContainer"></div>
+  <div id="user">
+    <form id="formUser">
+      <input type="text" placeholder="Enter your name" id="inputUser" required />
+      <button id="nameBtn">Add</button>
+    </form>
+  </div>
+  <div id="message">
+    <p id="clock" class="glow"></p>
+    <form id="formMessage">
       <input type="text" placeholder="Enter your message" id="inputMessage" />
       <button>Send</button>
       <button id="diceBtn">Roll dice</button>
@@ -25,7 +25,10 @@
       <ul id="messages"></ul>
     </form>
   </div>
-    <h2 id="diceElement">
-    </h2>
+  <h2 id="diceElement">
+  </h2>
+  <audio id="audio" controls autoplay>
+    <source src="https://vgmsite.com/soundtracks/super-mario-galaxy/cesiiref/1-01%20Overture.mp3" type="audio/mpeg">
+  </audio>
   </body>
 </html>
