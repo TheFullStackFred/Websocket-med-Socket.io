@@ -92,7 +92,8 @@ hr {
 }
 
 #message,
-#h2-messages {
+#h2-messages,
+#audio {
   display: none;
 }
 
@@ -105,10 +106,6 @@ hr {
   border-radius: 6px;
   width: fit-content;
   margin: auto;
-}
-
-#audio {
-  display: none;
 }
 
 /* Glow */
