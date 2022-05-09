@@ -43,7 +43,7 @@ setInterval(() => {
     today.getMinutes() +
     ':' +
     today.getSeconds() +
-    ' and its time to chat'
+    ' and its time to chat 🥳'
   io.emit('time', time)
 }, 1000)
 
