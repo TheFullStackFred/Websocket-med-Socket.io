@@ -75,6 +75,16 @@ io.on('connection', (socket) => {
     )
   })
 
+  socket.on('roll', (msg) => {
+    io.emit(
+      'newRoll',
+      `${msg.user} rolled a ${msg.value} and the total value is ${msg.totalValue}`
+    )
+    console.log(
+      `${msg.user} rolled a ${msg.value} and the total value is ${msg.totalValue}`
+    )
+  })
+
   socket.on('disconnect', () => {
     console.log(`Client ${socket.id} disconnected!`)
   })

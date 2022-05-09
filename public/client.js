@@ -47,7 +47,7 @@ const printNumber = (number) => {
   console.log('Singlevalue:', number)
   const sum = numbers.reduce((x, xx) => x + xx)
   const singleValue = numbers.reduce((x, xx) => (x = xx))
-  diceElement.innerHTML = `${myUser} got ${singleValue} and the total value is ${sum}`
+  socket.emit('roll', { user: myUser, value: singleValue, totalValue: sum })
 }
 
 diceBtn.addEventListener('click', (e) => {
@@ -67,4 +67,8 @@ socket.on('newChatMessage', (msg) => {
   item.textContent = msg
   messages.appendChild(item)
   messages.appendChild(hr)
+})
+
+socket.on('newRoll', (roll) => {
+  diceElement.innerHTML = roll
 })
