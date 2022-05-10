@@ -77,7 +77,7 @@ io.on('connection', (socket) => {
       {
         user: msg.user,
         message: msg.message,
-        date: timeStamp
+        time: timeStamp
       },
       (err, result) => {
         if (err) throw err
@@ -96,7 +96,7 @@ io.on('connection', (socket) => {
         user: msg.user,
         singlevalue: msg.value,
         totalvalue: msg.totalValue,
-        date: timeStamp
+        time: timeStamp
       },
       (err, result) => {
         if (err) throw err
