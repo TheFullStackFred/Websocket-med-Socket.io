@@ -22,15 +22,25 @@ mongo.connect(
     }
     db = client.db('nodesocket')
     messages = db.collection('messages')
+    values = db.collection('values')
   }
 )
 
 app.use(express.static('public'))
 
+//Endpoint for messages
 app.get('/messages', (req, res) => {
   messages.find().toArray((err, items) => {
     if (err) throw err
     res.json({ messages: items })
+  })
+})
+
+//Endpoint for values
+app.get('/values', (req, res) => {
+  values.find().toArray((err, items) => {
+    if (err) throw err
+    res.json({ values: items })
   })
 })
 
@@ -80,6 +90,18 @@ io.on('connection', (socket) => {
     io.emit(
       'newRoll',
       `${msg.user} rolled a ${msg.value} and the total value is ${msg.totalValue}`
+    )
+    values.insertOne(
+      {
+        user: msg.user,
+        singlevalue: msg.value,
+        totalvalue: msg.totalValue,
+        date: timeStamp
+      },
+      (err, result) => {
+        if (err) throw err
+        console.log(result)
+      }
     )
     console.log(
       `${msg.user} rolled a ${msg.value} and the total value is ${msg.totalValue}`
