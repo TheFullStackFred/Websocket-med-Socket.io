@@ -86,16 +86,16 @@ io.on('connection', (socket) => {
     )
   })
 
-  socket.on('roll', (msg) => {
+  socket.on('roll', (roll) => {
     io.emit(
       'newRoll',
-      `${msg.user} rolled a ${msg.value} and the total value is ${msg.totalValue}`
+      `${roll.user} rolled a ${roll.value} and the total value is ${roll.totalValue}`
     )
     values.insertOne(
       {
-        user: msg.user,
-        singlevalue: msg.value,
-        totalvalue: msg.totalValue,
+        user: roll.user,
+        singlevalue: roll.value,
+        totalvalue: roll.totalValue,
         time: timeStamp
       },
       (err, result) => {
@@ -104,7 +104,7 @@ io.on('connection', (socket) => {
       }
     )
     console.log(
-      `${msg.user} rolled a ${msg.value} and the total value is ${msg.totalValue}`
+      `${roll.user} rolled a ${roll.value} and the total value is ${roll.totalValue}`
     )
   })
 
