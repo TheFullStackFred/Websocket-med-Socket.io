@@ -57,7 +57,7 @@ let timeStamp =
   todayStamp.getSeconds()
 
 io.on('connection', (socket) => {
-  console.log(`A client with id ${socket.id} connected to the chat!`)
+  console.log(`A client with id ${socket.id} connected to the chat`)
 
   socket.on('chatMessage', (msg) => {
     io.emit('newChatMessage', msg.user + ' : ' + msg.message)
