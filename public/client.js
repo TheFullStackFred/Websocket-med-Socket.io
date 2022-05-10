@@ -16,6 +16,12 @@ const audio = document.getElementById('audio')
 const nameBtn = document.getElementById('nameBtn')
 let myUser
 
+//clock
+socket.on('time', (timeMsg) => {
+  clock.innerHTML = timeMsg
+})
+
+//Function for music start
 const play = () => {
   if (inputUser.value) {
     audio.play()
@@ -23,6 +29,7 @@ const play = () => {
 }
 nameBtn.addEventListener('click', play)
 
+//Username
 formUser.addEventListener('submit', (e) => {
   e.preventDefault()
   myUser = inputUser.value
@@ -33,6 +40,7 @@ formUser.addEventListener('submit', (e) => {
 })
 inputUser.value = ''
 
+//Chatmessages
 formMessage.addEventListener('submit', (e) => {
   e.preventDefault()
   if (inputMessage.value) {
@@ -40,7 +48,15 @@ formMessage.addEventListener('submit', (e) => {
     inputMessage.value = ''
   }
 })
-inputMessage.value = ''
+
+//chat
+socket.on('newChatMessage', (msg) => {
+  let hr = document.createElement('hr')
+  let item = document.createElement('li')
+  item.textContent = msg
+  messages.appendChild(item)
+  messages.appendChild(hr)
+})
 
 //DICE
 let dice = {
@@ -60,6 +76,7 @@ const printNumber = (number) => {
   socket.emit('roll', { user: myUser, value: singleValue, totalValue: sum })
 }
 
+//dice roll starter
 diceBtn.addEventListener('click', (e) => {
   e.preventDefault()
   diceElement.style.display = 'block'
@@ -67,18 +84,7 @@ diceBtn.addEventListener('click', (e) => {
   printNumber(result)
 })
 
-socket.on('time', (timeMsg) => {
-  clock.innerHTML = timeMsg
-})
-
-socket.on('newChatMessage', (msg) => {
-  let hr = document.createElement('hr')
-  let item = document.createElement('li')
-  item.textContent = msg
-  messages.appendChild(item)
-  messages.appendChild(hr)
-})
-
+//newroll
 socket.on('newRoll', (roll) => {
   diceElement.innerHTML = roll
 })

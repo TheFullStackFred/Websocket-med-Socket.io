@@ -33,6 +33,7 @@ app.get('/messages', (req, res) => {
     res.json({ messages: items })
   })
 })
+
 // Time for frontend
 setInterval(() => {
   let today = new Date()
