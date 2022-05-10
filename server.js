@@ -61,7 +61,7 @@ io.on('connection', (socket) => {
 
   socket.on('chatMessage', (msg) => {
     io.emit('newChatMessage', msg.user + ' : ' + msg.message)
-    console.log(`Client: ${socket.id}, Sent: ${msg.message}, At: ${timeStamp} `)
+    console.log(`Client: ${msg.user}, Sent: ${msg.message}, At: ${timeStamp} `)
     messages.insertOne(
       {
         user: msg.user,
